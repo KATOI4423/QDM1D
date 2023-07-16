@@ -1,0 +1,7 @@
+apps/debug
+apps/release
+apps/.qmake.stash
+apps/Makefile
+apps/Makefile.Debug
+apps/Makefile.Release
+apps/ui_mainwindow.h
