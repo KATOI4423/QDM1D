@@ -403,7 +403,7 @@ void MainWindow::on_lineX0_editingFinished()
 {
     bool check;
     double value = ui->lineX0->text().toDouble(&check);
-    if(( check == false ) || ( value <= 0 ) || (value > this->x_max )){
+    if(( check == false ) || ( value < this->x_min  ) || (value > this->x_max )){
         ui->lineX0->setText(QString::number(this->x0, 'g', 16));
         return;
     }
@@ -465,7 +465,7 @@ void MainWindow::on_lineXmin_editingFinished()
         return;
     }
     if(this->x0 <= value){
-        this->x0 = this->x_min + (this->x_max - this->x_min) * 0.3;
+        this->x0 = value + (this->x_max - value) * 0.3;
         ui->lineX0->setText(QString::number(this->x0, 'g', 6));
     }
     initialize();
@@ -483,7 +483,7 @@ void MainWindow::on_lineXmax_editingFinished()
         return;
     }
     if(this->x0 >= value){
-        this->x0 = this->x_min + (this->x_max - this->x_min) * 0.3;
+        this->x0 = this->x_min + (value - this->x_min) * 0.3;
         ui->lineX0->setText(QString::number(this->x0, 'g', 6));
     }
     initialize();
